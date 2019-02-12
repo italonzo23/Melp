@@ -1,0 +1,134 @@
+<!-- Page Content -->
+<div class="container">
+
+  <div class="row">
+    <!-- Blog Entries Column -->
+    <div class="col-md-8">
+      <h1 class="my-4">
+        Restaurantes
+      </h1>
+
+      <!-- Blog Post -->
+      <div class="card  mb-4" *ngFor="let restaurant of restaurants | paginate :{itemsPerPage : 5, currentPage: pages} | orderBy:fieldName">
+          <agm-map [latitude]="restaurant.address.location.lat" [longitude]="restaurant.address.location.lng">
+              <agm-marker [latitude]="restaurant.address.location.lat" [longitude]="restaurant.address.location.lng"></agm-marker>
+            </agm-map>
+        <div class="card-body">
+          <h2 class="card-title">{{restaurant.name}}</h2>
+          <hr>
+          <div class="row">
+            <div class="col">
+              <address>
+                <div>
+                    <i class="fas fa-map-marker-alt"></i>
+                    {{ restaurant.address.street }}
+                </div>
+                <br>
+                  <div>
+                      <i class="far fa-building"></i>
+                      {{ restaurant.address.city }} ,
+                      <br>{{ restaurant.address.state }}
+                  </div>  
+                </address>
+            </div>
+            <div class="col">
+              <address>
+                <div>
+                    <i class="fas fa-phone"></i>
+                    +{{ restaurant.contact.phone }}
+                    <br>
+                </div>
+                <i class="far fa-envelope"></i>
+                <a href="mailto:#"> {{ restaurant.contact.email }}</a>
+                <br>
+                <i class="fas fa-desktop"></i>
+                <a href="{{restaurant.contact.site}}"> {{restaurant.contact.site}}</a>
+              </address>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-footer text-muted">   
+            
+          <p>{{ restaurant.rating }}</p>
+        </div>
+      </div>
+      <!-- Pagination -->
+      <pagination-controls (pageChange)="pages = $event"></pagination-controls>
+    </div>
+
+    <!-- Sidebar Widgets Column -->
+    <div class="col-md-4">
+
+      <!-- Search Widget -->
+      <div class="card  my-4">
+        <h5 class="card-header">Buscar</h5>
+        <div class="card-body">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Buscar por...">
+            <span class="input-group-btn">
+              <button class="btn btn-outline-dark" type="btn-outline-info">Ir</button>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Categories Widget -->
+      <div class="card  my-4">
+        <h5 class="card-header">Categories</h5>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-lg-6">
+              <ul class="list-unstyled mb-0">
+                <li>
+                  <a href="#">Mariscos</a>
+                </li>
+                <li>
+                  <a href="#">Sushi</a>
+                </li>
+                <li>
+                  <a href="#">italiana</a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-lg-6">
+              <ul class="list-unstyled mb-0">
+                <li>
+                  <a href="#">Pizzería</a>
+                </li>
+                <li>
+                  <a href="#">Mexicana</a>
+                </li>
+                <li>
+                  <a href="#">Japonesa</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Side Widget -->
+      <div class="card my-4">
+        <h5 class="card-header">Estrellas michelin</h5>
+        <div class="card-body">
+          <strong>Una estrella. </strong>  
+          <br>
+            Un muy buen restaurante dentro de su categoría.
+            <br>
+          <strong>Dos estrellas.</strong>
+          <br>
+             Excelente comida, vale la pena un cambio de ruta.
+             <br>
+          <strong>Tres estrellas. </strong>
+          <br>
+            Cocina excepcional, vale la pena hacer un viaje especial para conocer el lugar.
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <!-- /.row -->
+
+</div>

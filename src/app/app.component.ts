@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import {Pipe, PipeTransform, Component } from '@angular/core';
+// tslint:disable-next-line:use-pipe-transform-interface
+@Pipe( {
+  name: 'orderBy'
+  } )
 
 @Component({
   selector: 'app-root',
