@@ -20,4 +20,23 @@ export class BodyComponent implements OnInit {
     this.restaurantsservices.getRestaurants().
       subscribe(restaurants => this.restaurants = restaurants);
   }
+  searchRestaurant(term: string) {
+    const restaurantArr: Restaurant[] = [];
+    console.log('Entro');
+    term = term.toLowerCase();
+    for (const rest of this.restaurants) {
+      const name =  rest.name.toLowerCase();
+      if ( name.indexOf(term) >= 0 ) {
+        console.log(name);
+        restaurantArr.push(rest);
+      }
+
+    }
+    return restaurantArr;
+  }
+
+  openRestaurant(ress: Restaurant) {
+    console.log('Entro a restaurant');
+    console.log(ress);
+  }
 }

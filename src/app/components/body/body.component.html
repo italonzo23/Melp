@@ -9,7 +9,7 @@
       </h1>
 
       <!-- Blog Post -->
-      <div class="card  mb-4" *ngFor="let restaurant of restaurants | paginate :{itemsPerPage : 5, currentPage: pages} | orderBy:fieldName">
+      <div class="card  mb-4" *ngFor="let restaurant of restaurants | paginate :{itemsPerPage : 5, currentPage: pages}">
           <agm-map [latitude]="restaurant.address.location.lat" [longitude]="restaurant.address.location.lng">
               <agm-marker [latitude]="restaurant.address.location.lat" [longitude]="restaurant.address.location.lng"></agm-marker>
             </agm-map>
@@ -49,7 +49,7 @@
         </div>
 
         <div class="card-footer text-muted">   
-            
+          <i class="far fa-thumbs-down"></i> 
           <p>{{ restaurant.rating }}</p>
         </div>
       </div>
@@ -62,12 +62,12 @@
 
       <!-- Search Widget -->
       <div class="card  my-4">
-        <h5 class="card-header">Buscar</h5>
+        <h5 class="card-header">Buscar restaurante</h5>
         <div class="card-body">
           <div class="input-group">
-            <input type="text" class="form-control" placeholder="Buscar por...">
+            <input type="text" class="form-control" #searchRestaurants (keyup)="searchRestaurant(searchRestaurants.value)" placeholder="Buscar por...">
             <span class="input-group-btn">
-              <button class="btn btn-outline-dark" type="btn-outline-info">Ir</button>
+              <button (click)="searchRestaurant(searchRestaurants.value)" class="btn btn-outline-dark" type="btn-outline-info">Ir</button>
             </span>
           </div>
         </div>
@@ -75,32 +75,47 @@
 
       <!-- Categories Widget -->
       <div class="card  my-4">
-        <h5 class="card-header">Categories</h5>
+        <h5 class="card-header">Clasificación</h5>
         <div class="card-body">
           <div class="row">
             <div class="col-lg-6">
               <ul class="list-unstyled mb-0">
                 <li>
-                  <a href="#">Mariscos</a>
+                  <a href="#"><i class="far fa-star"></i></a>
                 </li>
                 <li>
-                  <a href="#">Sushi</a>
+                  <a href="#">
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                  </a>
                 </li>
                 <li>
-                  <a href="#">italiana</a>
+                  <a href="#">
+                      <i class="far fa-star"></i>
+                      <i class="far fa-star"></i>
+                      <i class="far fa-star"></i>
+                  </a>
                 </li>
               </ul>
             </div>
             <div class="col-lg-6">
               <ul class="list-unstyled mb-0">
                 <li>
-                  <a href="#">Pizzería</a>
+                  <a href="#">
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                  </a>
                 </li>
                 <li>
-                  <a href="#">Mexicana</a>
-                </li>
-                <li>
-                  <a href="#">Japonesa</a>
+                  <a href="#">
+                      <i class="far fa-star"></i>
+                      <i class="far fa-star"></i>
+                      <i class="far fa-star"></i>
+                      <i class="far fa-star"></i>
+                      <i class="far fa-star"></i>
+                  </a>
                 </li>
               </ul>
             </div>
@@ -112,15 +127,18 @@
       <div class="card my-4">
         <h5 class="card-header">Estrellas michelin</h5>
         <div class="card-body">
-          <strong>Una estrella. </strong>  
+            <i class="far fa-star"></i>
           <br>
             Un muy buen restaurante dentro de su categoría.
             <br>
-          <strong>Dos estrellas.</strong>
+            <i class="far fa-star"></i>
+            <i class="far fa-star"></i>
           <br>
              Excelente comida, vale la pena un cambio de ruta.
              <br>
-          <strong>Tres estrellas. </strong>
+             <i class="far fa-star"></i>
+             <i class="far fa-star"></i>
+             <i class="far fa-star"></i>
           <br>
             Cocina excepcional, vale la pena hacer un viaje especial para conocer el lugar.
         </div>

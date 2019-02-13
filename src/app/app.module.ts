@@ -19,6 +19,7 @@ import { AgmCoreModule } from '@agm/core';
 
 // Pagination
 import {NgxPaginationModule} from 'ngx-pagination';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     NavbarComponent,
     FooterComponent,
     BodyComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
